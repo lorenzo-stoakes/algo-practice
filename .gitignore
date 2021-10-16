@@ -1,2 +1,3 @@
-qsort
-fib
+sort/qsort
+dp/fib
+dp/subarray
