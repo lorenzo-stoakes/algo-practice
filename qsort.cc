@@ -45,16 +45,20 @@ void qsort(std::vector<T>& ns)
 int main()
 {
 	std::vector<int> ns;
+	ns.reserve(100);
 	for (int i = 0; i < 100; i++) {
 		ns.push_back(100 - i);
 	}
 
 	qsort(ns);
 
-	for (int i = 0; i < 100; i++) {
-		std::cout << ns[i] << " ";
+	int prev = ns[0];
+	for (int i = 1; i < 100; i++) {
+		if (ns[i] < prev) {
+			std::cerr << "unsorted" << std::endl;
+			return 1;
+		}
 	}
-	std::cout << std::endl;
 
 	return 0;
 }
