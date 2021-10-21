@@ -36,28 +36,12 @@ void reaches_target(const Array2D& arr, std::deque<std::pair<int, int>>& q,
 		    std::unordered_set<std::pair<int, int>, pair_hash>& seen,
 		    int x, int y, int target)
 {
-	// Left
-	if (x > 0 && arr[x - 1][y] == target && seen.find({ x - 1, y }) == seen.end()) {
-		q.push_back({ x - 1, y });
-		seen.insert({ x - 1, y });
-	}
+	if (x < 0 || x >= arr.size() || y < 0 || y >= arr[x].size())
+		return;
 
-	// Right
-	if (x < arr.size() - 1 && arr[x + 1][y] == target && seen.find({ x + 1, y }) == seen.end()) {
-		q.push_back({ x + 1, y });
-		seen.insert({ x + 1, y });
-	}
-
-	// Up
-	if (y > 0 && arr[x][y - 1] == target && seen.find({ x, y - 1}) == seen.end()) {
-		q.push_back({ x, y - 1 });
-		seen.insert({ x, y - 1 });
-	}
-
-	// Down
-	if (y < arr[x].size() - 1 && arr[x][y + 1] == target && seen.find({ x, y + 1}) == seen.end()) {
-		q.push_back({ x, y + 1 });
-		seen.insert({ x, y + 1 });
+	if (arr[x][y] == target && seen.find({ x, y }) == seen.end()) {
+		q.push_back({x, y});
+		seen.insert({x, y});
 	}
 }
 
@@ -81,7 +65,10 @@ bool contains_sequence(const Array2D& arr, const std::vector<int>& seq)
 			auto [ x, y ] = q.front();
 			q.pop_front();
 
-			reaches_target(arr, q, seen, x, y, target);
+			reaches_target(arr, q, seen, x - 1, y, target); // Left
+			reaches_target(arr, q, seen, x + 1, y, target); // Right
+			reaches_target(arr, q, seen, x, y - 1, target); // Up
+			reaches_target(arr, q, seen, x, y + 1, target); // Down
 		}
 	}
 
