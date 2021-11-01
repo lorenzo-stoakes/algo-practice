@@ -13,3 +13,4 @@ prefix/sums
 sort/dice
 sort/qsort
 sort/triangle
+kadane/max_subarray
