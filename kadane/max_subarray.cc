@@ -9,23 +9,23 @@ std::tuple<int, int, int> max_subarray(const std::vector<int>& ns)
 {
 	int best_sum = std::numeric_limits<int>::min();
 	int best_start = 0, best_end = 0;
-	int current_sum = 0;
+	int sum = 0;
 
-	int current_start = 0;
-	for (int current_end = 0; current_end < ns.size(); current_end++) {
-		const int num = ns[current_end];
+	int start = 0;
+	for (int end = 0; end < ns.size(); end++) {
+		const int num = ns[end];
 
-		if (current_sum <= 0) {
-			current_start = current_end;
-			current_sum = num;
+		if (sum <= 0) {
+			start = end;
+			sum = num;
 		} else {
-			current_sum += num;
+			sum += num;
 		}
 
-		if (current_sum > best_sum) {
-			best_sum = current_sum;
-			best_start = current_start;
-			best_end = current_end;
+		if (sum > best_sum) {
+			best_sum = sum;
+			best_start = start;
+			best_end = end;
 		}
 	}
 
