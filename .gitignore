@@ -14,6 +14,7 @@ sort/dice
 sort/qsort
 sort/triangle
 kadane/max_subarray
+kadane/max_subarray2
 primitive/count_bits
 primitive/parity
 stacks/fish
