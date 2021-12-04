@@ -23,3 +23,5 @@ primitive/parity
 stacks/fish
 leader/leader1
 string/reverse_words
+hash/inflight
+hash/inflight2
