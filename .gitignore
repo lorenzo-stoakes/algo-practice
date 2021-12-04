@@ -13,6 +13,7 @@ prefix/sums
 sort/dice
 sort/qsort
 sort/triangle
+sort/merge_sorted
 kadane/max_subarray
 kadane/max_subarray2
 primitive/count_bits
