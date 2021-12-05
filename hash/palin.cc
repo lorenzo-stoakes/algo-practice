@@ -1,7 +1,22 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
+
+bool is_permut_palin_cleaner(const std::string& str)
+{
+	std::unordered_set<char> unpaired;
+
+	for (const char chr : str) {
+		if (unpaired.find(chr) != unpaired.end())
+			unpaired.erase(chr);
+		else
+			unpaired.insert(chr);
+	}
+
+	return unpaired.size() <= 1;
+}
 
 bool is_permut_palin(const std::string& str)
 {
@@ -34,7 +49,7 @@ int main()
 
 	for (const std::string& str : strs) {
 		std::cout << str << ": " <<
-			(is_permut_palin(str) ? "YES" : "NO") <<
+			(is_permut_palin_cleaner(str) ? "YES" : "NO") <<
 			std::endl;
 	}
 
