@@ -16,6 +16,7 @@ sort/qsort
 sort/triangle
 sort/merge_sorted
 sort/merge_sorted_multi
+sort/count_sort
 kadane/max_subarray
 kadane/max_subarray2
 primitive/count_bits
