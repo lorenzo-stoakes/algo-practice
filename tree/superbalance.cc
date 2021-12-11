@@ -8,7 +8,6 @@ struct node {
 	{}
 
 	int value;
-
 	struct node *left, *right;
 
 	bool is_leaf() const
