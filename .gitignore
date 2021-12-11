@@ -35,3 +35,4 @@ greedy/shuffle
 search/rotation
 search/duplicate
 tree/superbalance
+tree/check_bst
