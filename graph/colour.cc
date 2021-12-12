@@ -107,15 +107,13 @@ void colour_graph(node* first, int num_colours)
 		node *curr = stack.back();
 		stack.pop_back();
 
-		if (seen.find(curr) != seen.end())
-			continue;
-
 		std::unordered_set<int> illegal_colours;
 		for (node *neighbour : curr->neighbours) {
 			if (neighbour->colour != -1)
 				illegal_colours.insert(neighbour->colour);
 
-			stack.push_back(neighbour);
+			if (seen.find(neighbour) == seen.end())
+				stack.push_back(neighbour);
 		}
 
 		for (int i = 0; i < num_colours; i++) {
