@@ -39,3 +39,4 @@ tree/check_bst
 tree/second_largest
 graph/colour
 graph/shortest_path_unweighted
+graph/duplicate2

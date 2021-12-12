@@ -1,10 +1,12 @@
 // See https://www.interviewcake.com/question/cpp/find-duplicate-optimize-for-space?course=fc1&section=sorting-searching-logarithms
+// See also graph/duplicate2.cc
 
 #include <iostream>
 #include <stdexcept>
 #include <vector>
 
 // size == n + 1, containing 1..n.
+// O(n lg n) time, O(1) space
 int find_duplicate(const std::vector<int>& ns)
 {
 	// The maximum possible valid integer.
