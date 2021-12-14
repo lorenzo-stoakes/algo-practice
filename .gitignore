@@ -11,6 +11,7 @@ dp/seq3d
 dp/subarray
 dp/triangle
 dp/coin
+dp/knapsack01
 prefix/minavslice
 prefix/sums
 sort/dice
