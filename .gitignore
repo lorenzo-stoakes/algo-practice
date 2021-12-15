@@ -28,6 +28,7 @@ stacks/fish
 stacks/max_stack
 stacks/stack_queue
 stacks/paren
+stacks/paren_balance
 leader/leader1
 string/reverse_words
 hash/inflight
