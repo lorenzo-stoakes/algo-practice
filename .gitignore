@@ -26,6 +26,7 @@ primitive/count_bits
 primitive/parity
 stacks/fish
 stacks/max_stack
+stacks/stack_queue
 leader/leader1
 string/reverse_words
 hash/inflight
