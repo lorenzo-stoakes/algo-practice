@@ -25,6 +25,7 @@ kadane/max_subarray2
 primitive/count_bits
 primitive/parity
 stacks/fish
+stacks/max_stack
 leader/leader1
 string/reverse_words
 hash/inflight
