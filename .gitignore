@@ -51,3 +51,4 @@ permute/string_permute
 select/quickselect
 linked-list/delete-node
 linked-list/contains-cycle
+linked-list/reverse
