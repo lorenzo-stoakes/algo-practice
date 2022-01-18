@@ -57,7 +57,10 @@ int min_turns(const std::vector<int>& A, const std::vector<int>& B)
 
 int main()
 {
-	std::cout << min_turns({ 1,2,3,4,3,1 }, { 6 }) << std::endl;
+	std::cout << min_turns({5}, { 1, 1, 6 }) << std::endl;
+	std::cout << min_turns({2,3,1,1,2}, { 5, 4, 6 }) << std::endl;
+	std::cout << min_turns({5,4,1,2,6,5}, { 2 }) << std::endl;
+	std::cout << min_turns({1,2,3,4,3,2,1}, { 6 }) << std::endl;
 
 	return 0;
 }
