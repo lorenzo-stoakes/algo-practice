@@ -1,14 +1,15 @@
+#include <algorithm>
 #include <iostream>
 #include <unordered_set>
 #include <utility>
 #include <vector>
 
-// Rough attempt at knapsack 0/1.
-
-int best_fit(const std::vector<std::pair<int, int>>& weight_val_pairs,
+// First rough attempt.
+int rough_fit(const std::vector<std::pair<int, int>>& weight_val_pairs,
 	     int size)
 {
 	std::vector<int> so_far_val(size + 1);
+	// Iffy...
 	std::vector<std::unordered_set<int>> so_far(size + 1);
 
 	for (int i = 0; i <= size; i++) {
@@ -51,6 +52,54 @@ int best_fit(const std::vector<std::pair<int, int>>& weight_val_pairs,
 	}
 
 	return so_far_val[size];
+}
+
+// Use full dynamic programming table.
+int best_fit1(const std::vector<std::pair<int, int>>& weight_val_pairs,
+	      int max_weight)
+{
+	const size_t size = weight_val_pairs.size();
+
+	// Each row i contains items [0, i).
+	// Each column represents a weight limit.
+	std::vector<std::vector<int>> table(size + 1);
+	for (auto& row : table) {
+		row = std::vector<int>(max_weight + 1);
+	}
+
+	for (size_t item = 1; item <= size; item++) {
+		const auto [ weight, val ] = weight_val_pairs[item - 1];
+		for (int limit = 0; limit <= max_weight; limit++) {
+			if (weight > limit)
+				table[item][limit] = table[item - 1][limit];
+			else
+				table[item][limit] = std::max(
+					table[item - 1][limit],
+					table[item - 1][limit - weight] + val);
+		}
+	}
+
+	return table[size][max_weight];
+}
+
+// But we don't need the full table, we can just use two rows.
+int best_fit(const std::vector<std::pair<int, int>>& weight_val_pairs,
+	     int max_weight)
+{
+	const size_t size = weight_val_pairs.size();
+
+	std::vector<int> so_far(max_weight + 1);
+	auto prev = so_far;
+
+	for (const auto [ weight, val ] : weight_val_pairs) {
+		for (int limit = weight; limit <= max_weight; limit++) {
+			const int new_val = prev[limit - weight] + val;
+			so_far[limit] = std::max(prev[limit], new_val);
+		}
+		prev = so_far;
+	}
+
+	return so_far[max_weight];
 }
 
 int main()
