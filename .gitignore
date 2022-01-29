@@ -40,6 +40,7 @@ greedy/apple
 greedy/product3
 greedy/nodivmult
 greedy/shuffle
+search/bsearch
 search/rotation
 search/duplicate
 tree/superbalance
